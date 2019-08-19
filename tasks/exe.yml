@@ -10,16 +10,19 @@
     dest: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
 
 - name: stat installer
-  win_fileversion: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
+  win_fileversion: 
+    path: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
   register: installer_fileversion
 
 - name: stat installer
-  win_stat: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
+  win_stat: 
+    path: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
   register: exe_stat
 
 - name: stat installer
   win_fileversion:
-  register: exe_fileversion
+  register: 
+    path: exe_fileversion
   when: exe_stat.stat.exists != True
 
 
