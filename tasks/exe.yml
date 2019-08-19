@@ -9,8 +9,23 @@
     url: "{{ FileUri }}"
     dest: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
 
+- name: stat installer
+  win_fileversion: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
+  register: installer_fileversion
+
+- name: stat installer
+  win_stat: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
+  register: exe_stat
+
+- name: stat installer
+  win_fileversion:
+  register: exe_fileversion
+  when: exe_stat.stat.exists != True
+
+
 - name: Install visual studio code
   win_shell: |
     $installerPath = "{{ ansible_env.TEMP }}\vscode-install.{{ ext }}"
     $exeArgs = "{{ exeArgs }}"
     Start-Process -Wait $installerPath -ArgumentList $exeArgs
+  when: exe_stat.stat.exists != True or exe_fileverion != installer_fileversion
