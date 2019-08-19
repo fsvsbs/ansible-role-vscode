@@ -25,6 +25,10 @@
   register: exe_fileversion
   when: exe_stat.stat.exists == True
 
+- name: update exe file version
+  set_fact:
+    exe_fileversion: "{{ exe_fileversion |  replace('-insiders','') }}"
+
 
 - name: Install visual studio code
   win_shell: |
@@ -33,4 +37,5 @@
     Start-Process -Wait $installerPath -ArgumentList $exeArgs
   when: 
   - exe_stat.stat.exists == True
-  - exe_fileverion != installer_fileversion
+  - exe_fileversion is defined
+  - exe_fileversion != installer_fileversion
