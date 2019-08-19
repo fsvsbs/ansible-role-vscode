@@ -23,7 +23,7 @@
   win_file_version:
     path: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
   register: exe_fileversion
-  when: exe_stat.stat.exists != True
+  when: exe_stat.stat.exists == True
 
 
 - name: Install visual studio code
@@ -31,4 +31,6 @@
     $installerPath = "{{ ansible_env.TEMP }}\vscode-install.{{ ext }}"
     $exeArgs = "{{ exeArgs }}"
     Start-Process -Wait $installerPath -ArgumentList $exeArgs
-  when: exe_stat.stat.exists != True or exe_fileverion != installer_fileversion
+  when: 
+  - exe_stat.stat.exists == True
+  - exe_fileverion != installer_fileversion
