@@ -9,18 +9,18 @@
     url: "{{ FileUri }}"
     dest: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
 
-- name: stat installer
-  win_fileversion: 
+- name: file version installer
+  win_file_version: 
     path: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
   register: installer_fileversion
 
-- name: stat installer
+- name: stat installed file
   win_stat: 
     path: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
   register: exe_stat
 
-- name: stat installer
-  win_fileversion:
+- name: file version installed file
+  win_file_version:
   register: 
     path: exe_fileversion
   when: exe_stat.stat.exists != True
