@@ -1,0 +1,6 @@
+channel: stable
+
+FileUri: "https://vscode-update.azurewebsites.net/latest/{{ platform }}/{{ channel }}"
+
+exeArgs: = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+

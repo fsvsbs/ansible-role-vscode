@@ -1,0 +1,3 @@
+platform: darwin
+ext: zip
+exepath: '/usr/local/bin/code'

@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  author: James Bailey
+  description: Role for installing the Visual Studio Code IDE.
+  company: FSvsBS
+  license: MIT
+  min_ansible_version: 2.6
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+    - name: Fedora
+      versions:
+        - 28
+    - name: opensuse
+      versions:
+        - 15.1
+    - name: windows
+  galaxy_tags:
+    - code
+    - editor
+    - ide
+    - development
+dependencies: []

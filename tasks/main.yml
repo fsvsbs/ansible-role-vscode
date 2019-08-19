@@ -1,0 +1,21 @@
+---
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_pkg_mgr }}.yml"
+  when: ansible_pkg_mgr is defined
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+  ignore_errors: yes
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}-{{ channel }}.yml"
+  when: 
+   - channel == 'insiders'
+   - ansible_os_family != 'Windows'
+  ignore_errors: yes
+
+
+- include_tasks: "{{ ext }}.yml"
+
+
+
