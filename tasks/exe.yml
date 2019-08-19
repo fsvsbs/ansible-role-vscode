@@ -21,8 +21,8 @@
 
 - name: file version installed file
   win_file_version:
-  register: 
-    path: exe_fileversion
+    path: "{{ ansible_env.ProgramFiles }}\\Microsoft VS Code Insiders\\Code - Insiders.exe"
+  register: exe_fileversion
   when: exe_stat.stat.exists != True
 
 
