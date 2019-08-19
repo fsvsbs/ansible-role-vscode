@@ -1,4 +1,9 @@
 ---
+- name: set Uri
+  set_fact:
+    FileUri: "{{ baseuri }}/{{ platform }}/{{ channel }}"
+
+
 - name: Download Install File
   win_get_url:
     url: "{{ FileUri }}"
