@@ -27,7 +27,7 @@
 
 - name: update exe file version
   set_fact:
-    exe_productversion: "{{ exe_fileversion.win_file_version.product_version |  replace('-insiders','') }}"
+    exe_productversion: "{{ exe_fileversion.win_file_version.product_version |  replace('-insider','') }}"
 
 
 - name: Install visual studio code
