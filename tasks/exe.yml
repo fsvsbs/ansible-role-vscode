@@ -11,5 +11,5 @@
 
 - name: Install visual studio code
   win_package:
-    path: "{{ FileUri }}/vscode-install.{{ ext }}"
+    path: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
     arguments: "{{ exeArgs }}"
