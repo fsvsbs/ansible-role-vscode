@@ -2,5 +2,5 @@ channel: stable
 
 baseuri: "https://vscode-update.azurewebsites.net/latest"
 
-exeArgs: = '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
+exeArgs: '/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath'
 
