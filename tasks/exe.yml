@@ -7,7 +7,7 @@
 - name: Download Install File
   win_get_url:
     url: "{{ FileUri }}"
-    dest: "{{ ansible_env.TEMP }}\vscode-install.{{ ext }}"
+    dest: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
 
 - name: Install visual studio code
   win_shell: |
