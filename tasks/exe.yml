@@ -10,6 +10,13 @@
     dest: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
 
 - name: Install visual studio code
-  win_package:
-    path: "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
-    arguments: "{{ exeArgs }}"
+  win_shell: |
+    $installerPath = "{{ ansible_env.TEMP }}\\vscode-install.{{ ext }}"
+    $exeArgs = "{{ exeArgs }}"
+    if (-not $PSCmdlet.ShouldProcess("$installerPath $exeArgs", 'Start-Process -Wait')) {
+          break
+        }
+        else
+        {
+          Start-Process -Wait $installerPath -ArgumentList $exeArgs
+        }
