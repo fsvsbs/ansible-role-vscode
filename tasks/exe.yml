@@ -28,6 +28,7 @@
 - name: update exe file version
   set_fact:
     exe_productversion: "{{ exe_fileversion.win_file_version.product_version |  replace('-insider','') }}"
+    installer_productversion: "{{ installer_fileversion.win_file_version.product_version |  trim }}"
 
 
 - name: Install visual studio code
@@ -38,4 +39,4 @@
   when: 
   - exe_stat.stat.exists == True
   - exe_productversion is defined
-  - exe_productversion != installer_fileversion.win_file_version.product_version
+  - exe_productversion != instainstaller_productversion
