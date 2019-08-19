@@ -18,10 +18,12 @@
 - fail:
     msg: The platform variable must be either win32-x64 or win32
   when: platform != "win32-x64" or platform != "win32"
+  ignore_errors: yes
 
 - fail:
     msg: The channel variable must be either stable or insider
   when: channel != "stable" or channel != "insider"
+  ignore_errors: yes
 
 - include_tasks: "{{ ext }}.yml"
 
